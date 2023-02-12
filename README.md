@@ -1,2 +1,2 @@
 # Hugo-A-E-Neumayer-VirtualPortfolio
-This is my Virtual Portfolio of Data analytics/Data Science
+This is my Virtual Portfolio of Data Analytics/Data Science
