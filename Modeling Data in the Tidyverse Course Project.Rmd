@@ -1,0 +1,142 @@
+
+---
+title: "Modeling Data  the Tidyverse Course Project"
+author: "Hugo Alexis Emanuel Neumayer"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Data Read
+We proceed to load the data from the training and test files
+
+
+```{r}
+
+complaints_train<- read.csv(here::here("data","data_complaints_train.csv"))
+
+complaints_test<- read.csv(here::here ("data","data_complaints_test.csv"))
+
+```
+## Data Wrangling
+Here the format of the product variable is changed to factor. Numbers, unnecessary line breaks, superfluous text like "XXX". An identification variable was also added to distinguish each claim in the training file. I call this variable "id_problem" just like in the test file.   
+```{r}
+library(dplyr)
+
+complaints_train <- complaints_train %>% janitor::clean_names()
+complaints_test<- complaints_test %>% janitor::clean_names()
+complaints_train  <- tibble::rowid_to_column(complaints_train , "id_problem")
+library(magrittr)
+complaints_train $product %<>% factor
+
+library(stringr)
+complaints_train$consumer_complaint_narrative<-       stringr::str_replace_all  (complaints_train$consumer_complaint_narrative, "[XX]+","")
+ 
+ 
+complaints_train$consumer_complaint_narrative  <-  stringr::str_replace_all (complaints_train$consumer_complaint_narrative, "[xx]+"," ")
+ 
+ 
+ 
+complaints_train$consumer_complaint_narrative<-  stringr::str_replace_all(complaints_train$consumer_complaint_narrative , "[^[:alnum:]]", " ")
+ 
+ 
+complaints_train$consumer_complaint_narrative  <-  stringr::str_replace_all (complaints_train$consumer_complaint_narrative, "\\d", " ")
+ 
+ 
+complaints_test$consumer_complaint_narrative <-  stringr::str_replace_all (complaints_test$consumer_complaint_narrative, "[XX]+", " ")
+
+complaints_test$consumer_complaint_narrative  <-  stringr::str_replace_all (complaints_test$consumer_complaint_narrative , "[xx]+", " ")
+
+complaints_test$consumer_complaint_narrative  <-  stringr::str_replace_all (complaints_test$consumer_complaint_narrative, "[^[:alnum:]]", " ")
+
+complaints_test$consumer_complaint_narrative<- stringr::str_replace_all (complaints_test$consumer_complaint_narrative , "\\d", " ")
+
+
+
+
+
+```
+## Recipe
+
+We continue to make the recipe. Here we use the step function within the same recipe to process the text strings of the complaints. Here it was possible to Tokenize the complaints variable, converting them into strings of word tokens, filter the stop words and determine the tfidf of each word
+
+```{r}
+library(textrecipes)
+library(themis)
+
+recipe_complaints <- recipe(product ~ consumer_complaint_narrative,
+                  data = complaints_train) %>%
+    step_tokenize(consumer_complaint_narrative) %>%
+    step_tokenfilter(consumer_complaint_narrative, max_tokens = 1000) %>%
+    step_tfidf(consumer_complaint_narrative) 
+
+```
+## Model Specifications
+```{r}
+library(rpart)
+ complain_model <- parsnip::decision_tree() %>%
+        parsnip::set_mode("classification") %>%
+        parsnip::set_engine("rpart")
+
+```
+## WorkFlow
+
+```{r}
+complain_wflow <-workflows::workflow() %>%
+   workflows::add_recipe(recipe_complaints)%>%
+    workflows::add_model(complain_model)
+
+```
+## Fit Model
+```{r}
+complain_wflow_fit <- parsnip::fit(complain_wflow,data=complaints_train)
+```
+## Model Performance
+The model was evaluated with the training data. The acurracy function was used to evaluate how far the predicted result and actual result values are. From here you get a precision of 0.8588
+
+```{r}
+library(yardstick)
+ 
+pred_complaint<-predict(complain_wflow_fit, new_data =complaints_train)
+ 
+yardstick::accuracy(complaints_train,truth = complaints_train$product, estimate = pred_complaint$.pred_class)
+
+```
+## Cross validation
+Cross validation was then used in which the training data was further split using the vfold_cv() function from the rsample package.
+4 folds were used as a minimum due to performance issues.
+With the metric function we can mainly see the precision of the model.
+
+```{r}
+library(rsample)
+library(tune)
+
+set.seed(1234)
+
+vfolds_complain <- vfold_cv(complaints_train, v = 4)
+resample_fit <- tune::fit_resamples(complain_wflow, vfolds_complain)
+
+tune::collect_metrics(resample_fit) 
+
+
+final_w_flow <-   finalize_workflow( complain_wflow,resample_fit$.metrics)
+ 
+final_model <- fit(final_w_flow, complaints_train)
+ 
+ 
+Pred_V <- predict(final_model,  complaints_train)
+
+final_w_flow <-   finalize_workflow( complain_wflow,resample_fit$.metrics)
+ 
+final_model <- fit(final_w_flow, complaints_train)
+
+```
+## Prediction with test data
+```{r}
+Pred_T <- predict(final_model, complaints_test)
+ 
+Pred_T 
+
+```
