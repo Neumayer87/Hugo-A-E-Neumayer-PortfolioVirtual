@@ -1,0 +1,1612 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.4
+-- Dumped by pg_dump version 13.4
+
+-- Started on 2023-02-27 01:39:34
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 229 (class 1259 OID 82215)
+-- Name: CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL" (
+    id_local integer NOT NULL,
+    id_caracteristicas_constructivas_l integer NOT NULL,
+    nombre_caract_constructiva_l character varying NOT NULL,
+    descrip_caract_exigible_l character varying NOT NULL,
+    descrip_caract_deseable_l character varying NOT NULL
+);
+
+
+ALTER TABLE public."CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL" OWNER TO postgres;
+
+--
+-- TOC entry 227 (class 1259 OID 82211)
+-- Name: CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL_id_local_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL_id_local_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL_id_local_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3152 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL_id_local_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL_id_local_seq" OWNED BY public."CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL".id_local;
+
+
+--
+-- TOC entry 226 (class 1259 OID 82196)
+-- Name: CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO" (
+    id_servicio integer NOT NULL,
+    id_caracteristica_constructiva_s integer NOT NULL,
+    nombre_caract_constructiva_s character varying NOT NULL,
+    descripcion_caract_exigible_s character varying NOT NULL,
+    descripcion_carct_deseable_s character varying NOT NULL
+);
+
+
+ALTER TABLE public."CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO" OWNER TO postgres;
+
+--
+-- TOC entry 224 (class 1259 OID 82192)
+-- Name: CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO_id_servicio_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO_id_servicio_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO_id_servicio_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3153 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO_id_servicio_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO_id_servicio_seq" OWNED BY public."CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO".id_servicio;
+
+
+--
+-- TOC entry 225 (class 1259 OID 82194)
+-- Name: CARACTERISTICAS CONSTRUCTIVAS_id_caracteristica_constructiv_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."CARACTERISTICAS CONSTRUCTIVAS_id_caracteristica_constructiv_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."CARACTERISTICAS CONSTRUCTIVAS_id_caracteristica_constructiv_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3154 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: CARACTERISTICAS CONSTRUCTIVAS_id_caracteristica_constructiv_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."CARACTERISTICAS CONSTRUCTIVAS_id_caracteristica_constructiv_seq" OWNED BY public."CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO".id_caracteristica_constructiva_s;
+
+
+--
+-- TOC entry 228 (class 1259 OID 82213)
+-- Name: CARACTERISTICAS CONSTRUCTIVAS_id_caracteristicas_constructi_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."CARACTERISTICAS CONSTRUCTIVAS_id_caracteristicas_constructi_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."CARACTERISTICAS CONSTRUCTIVAS_id_caracteristicas_constructi_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3155 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: CARACTERISTICAS CONSTRUCTIVAS_id_caracteristicas_constructi_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."CARACTERISTICAS CONSTRUCTIVAS_id_caracteristicas_constructi_seq" OWNED BY public."CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL".id_caracteristicas_constructivas_l;
+
+
+--
+-- TOC entry 223 (class 1259 OID 82123)
+-- Name: EQUIPAMIENTO - PROVEEDORES LOCALES; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."EQUIPAMIENTO - PROVEEDORES LOCALES" (
+    id_equipamiento integer NOT NULL,
+    id_proveedor_local integer NOT NULL
+);
+
+
+ALTER TABLE public."EQUIPAMIENTO - PROVEEDORES LOCALES" OWNER TO postgres;
+
+--
+-- TOC entry 221 (class 1259 OID 82119)
+-- Name: EQUIPAMIENTO - PROVEEDORES LOCALES_id_equipamiento_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."EQUIPAMIENTO - PROVEEDORES LOCALES_id_equipamiento_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."EQUIPAMIENTO - PROVEEDORES LOCALES_id_equipamiento_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3156 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: EQUIPAMIENTO - PROVEEDORES LOCALES_id_equipamiento_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."EQUIPAMIENTO - PROVEEDORES LOCALES_id_equipamiento_seq" OWNED BY public."EQUIPAMIENTO - PROVEEDORES LOCALES".id_equipamiento;
+
+
+--
+-- TOC entry 222 (class 1259 OID 82121)
+-- Name: EQUIPAMIENTO - PROVEEDORES LOCALES_id_proveedor_local_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."EQUIPAMIENTO - PROVEEDORES LOCALES_id_proveedor_local_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."EQUIPAMIENTO - PROVEEDORES LOCALES_id_proveedor_local_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3157 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: EQUIPAMIENTO - PROVEEDORES LOCALES_id_proveedor_local_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."EQUIPAMIENTO - PROVEEDORES LOCALES_id_proveedor_local_seq" OWNED BY public."EQUIPAMIENTO - PROVEEDORES LOCALES".id_proveedor_local;
+
+
+--
+-- TOC entry 204 (class 1259 OID 81986)
+-- Name: EQUIPAMIENTOS; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."EQUIPAMIENTOS" (
+    id_tipo_equipamiento integer NOT NULL,
+    id_equipamiento integer NOT NULL,
+    nombre_de_venta character varying NOT NULL,
+    marca character varying NOT NULL,
+    modelo character varying NOT NULL,
+    descripcion_gral character varying,
+    manual_tecnico character varying,
+    dispocicion_anmat character varying,
+    instalacion_y_o_equip_auxiliar_requerido character varying,
+    plano_de_instalacion_gral character varying
+);
+
+
+ALTER TABLE public."EQUIPAMIENTOS" OWNER TO postgres;
+
+--
+-- TOC entry 203 (class 1259 OID 81984)
+-- Name: EQUIPAMIENTOS_id_equipamiento_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."EQUIPAMIENTOS_id_equipamiento_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."EQUIPAMIENTOS_id_equipamiento_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3158 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: EQUIPAMIENTOS_id_equipamiento_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."EQUIPAMIENTOS_id_equipamiento_seq" OWNED BY public."EQUIPAMIENTOS".id_equipamiento;
+
+
+--
+-- TOC entry 202 (class 1259 OID 81982)
+-- Name: EQUIPAMIENTOS_id_tipo_equipamiento_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."EQUIPAMIENTOS_id_tipo_equipamiento_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."EQUIPAMIENTOS_id_tipo_equipamiento_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3159 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: EQUIPAMIENTOS_id_tipo_equipamiento_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."EQUIPAMIENTOS_id_tipo_equipamiento_seq" OWNED BY public."EQUIPAMIENTOS".id_tipo_equipamiento;
+
+
+--
+-- TOC entry 210 (class 1259 OID 82018)
+-- Name: ESPECIFICACIONES TECNICAS; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."ESPECIFICACIONES TECNICAS" (
+    id_equipamiento integer NOT NULL,
+    id_especificaciones_tecnicas integer NOT NULL,
+    id_tipos_especifacion_tecnica integer NOT NULL,
+    nombre character varying NOT NULL,
+    dato_magnitud character varying,
+    unidades character varying,
+    descripcion_particular character varying,
+    plano_de_instalacion_particular character varying
+);
+
+
+ALTER TABLE public."ESPECIFICACIONES TECNICAS" OWNER TO postgres;
+
+--
+-- TOC entry 207 (class 1259 OID 82012)
+-- Name: ESPECIFICACIONES TECNICAS_id_equipamiento_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."ESPECIFICACIONES TECNICAS_id_equipamiento_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."ESPECIFICACIONES TECNICAS_id_equipamiento_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3160 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: ESPECIFICACIONES TECNICAS_id_equipamiento_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."ESPECIFICACIONES TECNICAS_id_equipamiento_seq" OWNED BY public."ESPECIFICACIONES TECNICAS".id_equipamiento;
+
+
+--
+-- TOC entry 208 (class 1259 OID 82014)
+-- Name: ESPECIFICACIONES TECNICAS_id_especificaciones_tecnicas_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."ESPECIFICACIONES TECNICAS_id_especificaciones_tecnicas_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."ESPECIFICACIONES TECNICAS_id_especificaciones_tecnicas_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3161 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: ESPECIFICACIONES TECNICAS_id_especificaciones_tecnicas_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."ESPECIFICACIONES TECNICAS_id_especificaciones_tecnicas_seq" OWNED BY public."ESPECIFICACIONES TECNICAS".id_especificaciones_tecnicas;
+
+
+--
+-- TOC entry 209 (class 1259 OID 82016)
+-- Name: ESPECIFICACIONES TECNICAS_id_tipos_especifacion_tecnica_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."ESPECIFICACIONES TECNICAS_id_tipos_especifacion_tecnica_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."ESPECIFICACIONES TECNICAS_id_tipos_especifacion_tecnica_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3162 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: ESPECIFICACIONES TECNICAS_id_tipos_especifacion_tecnica_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."ESPECIFICACIONES TECNICAS_id_tipos_especifacion_tecnica_seq" OWNED BY public."ESPECIFICACIONES TECNICAS".id_tipos_especifacion_tecnica;
+
+
+--
+-- TOC entry 218 (class 1259 OID 82088)
+-- Name: LOCAL -TIPO DE EQUIPAMIENTO; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."LOCAL -TIPO DE EQUIPAMIENTO" (
+    id_local integer NOT NULL,
+    id_tipo_equipamiento integer NOT NULL,
+    equipamiento_minimo_pngcam character varying,
+    equipamiento_deseable_pngcam character varying
+);
+
+
+ALTER TABLE public."LOCAL -TIPO DE EQUIPAMIENTO" OWNER TO postgres;
+
+--
+-- TOC entry 216 (class 1259 OID 82084)
+-- Name: LOCAL-TIPO DE EQUIPAMIENTO_id_local_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."LOCAL-TIPO DE EQUIPAMIENTO_id_local_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."LOCAL-TIPO DE EQUIPAMIENTO_id_local_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3163 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: LOCAL-TIPO DE EQUIPAMIENTO_id_local_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."LOCAL-TIPO DE EQUIPAMIENTO_id_local_seq" OWNED BY public."LOCAL -TIPO DE EQUIPAMIENTO".id_local;
+
+
+--
+-- TOC entry 217 (class 1259 OID 82086)
+-- Name: LOCAL-TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."LOCAL-TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."LOCAL-TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3164 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: LOCAL-TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."LOCAL-TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_seq" OWNED BY public."LOCAL -TIPO DE EQUIPAMIENTO".id_tipo_equipamiento;
+
+
+--
+-- TOC entry 215 (class 1259 OID 82069)
+-- Name: LOCALES; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."LOCALES" (
+    id_servicio integer NOT NULL,
+    id_local integer NOT NULL,
+    nombre_del_local character varying NOT NULL,
+    superficie_exigible_en_m2 character varying,
+    superficie_deseable_en_m2 character varying,
+    zona_y_o_area_y_o_unidad character varying
+);
+
+
+ALTER TABLE public."LOCALES" OWNER TO postgres;
+
+--
+-- TOC entry 214 (class 1259 OID 82067)
+-- Name: LOCALES_id_local_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."LOCALES_id_local_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."LOCALES_id_local_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3165 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: LOCALES_id_local_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."LOCALES_id_local_seq" OWNED BY public."LOCALES".id_local;
+
+
+--
+-- TOC entry 213 (class 1259 OID 82065)
+-- Name: LOCALES_id_servicio_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."LOCALES_id_servicio_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."LOCALES_id_servicio_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3166 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: LOCALES_id_servicio_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."LOCALES_id_servicio_seq" OWNED BY public."LOCALES".id_servicio;
+
+
+--
+-- TOC entry 220 (class 1259 OID 82110)
+-- Name: PROVEEDORES LOCALES; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."PROVEEDORES LOCALES" (
+    id_proveedor_local integer NOT NULL,
+    nombre_proveedor_local character varying NOT NULL,
+    rubro character varying NOT NULL,
+    telefono character varying NOT NULL,
+    pagina_web character varying NOT NULL,
+    antecedentes character varying NOT NULL,
+    email character varying NOT NULL
+);
+
+
+ALTER TABLE public."PROVEEDORES LOCALES" OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 82108)
+-- Name: PROVEEDORES LOCALES_id_proveedor_local_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."PROVEEDORES LOCALES_id_proveedor_local_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."PROVEEDORES LOCALES_id_proveedor_local_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3167 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: PROVEEDORES LOCALES_id_proveedor_local_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."PROVEEDORES LOCALES_id_proveedor_local_seq" OWNED BY public."PROVEEDORES LOCALES".id_proveedor_local;
+
+
+--
+-- TOC entry 212 (class 1259 OID 82042)
+-- Name: SERVICIOS; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."SERVICIOS" (
+    id_servicio integer NOT NULL,
+    nombre_del_servicio character varying NOT NULL,
+    nombre_en_pngcam character varying,
+    directriz_pngcam character varying
+);
+
+
+ALTER TABLE public."SERVICIOS" OWNER TO postgres;
+
+--
+-- TOC entry 211 (class 1259 OID 82040)
+-- Name: SERVICIOS_id_servicio_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."SERVICIOS_id_servicio_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."SERVICIOS_id_servicio_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3168 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: SERVICIOS_id_servicio_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."SERVICIOS_id_servicio_seq" OWNED BY public."SERVICIOS".id_servicio;
+
+
+--
+-- TOC entry 201 (class 1259 OID 81973)
+-- Name: TIPO DE EQUIPAMIENTO; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."TIPO DE EQUIPAMIENTO" (
+    id_tipo_equipamiento integer NOT NULL,
+    nombre_pngcam character varying NOT NULL,
+    categoria character varying NOT NULL,
+    descripcion_pngcam character varying,
+    ecri character varying
+);
+
+
+ALTER TABLE public."TIPO DE EQUIPAMIENTO" OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 81971)
+-- Name: TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3169 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_seq" OWNED BY public."TIPO DE EQUIPAMIENTO".id_tipo_equipamiento;
+
+
+--
+-- TOC entry 206 (class 1259 OID 82003)
+-- Name: TIPOS DE ESPECIFICACIONES TECNICAS; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."TIPOS DE ESPECIFICACIONES TECNICAS" (
+    id_tipo_especificacion_tecnica integer NOT NULL,
+    tipo_especificacion_tecnica character varying NOT NULL
+);
+
+
+ALTER TABLE public."TIPOS DE ESPECIFICACIONES TECNICAS" OWNER TO postgres;
+
+--
+-- TOC entry 205 (class 1259 OID 82001)
+-- Name: TIPOS DE ESPECIFICACIONES TEC_id_tipo_especificacion_tecnic_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."TIPOS DE ESPECIFICACIONES TEC_id_tipo_especificacion_tecnic_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."TIPOS DE ESPECIFICACIONES TEC_id_tipo_especificacion_tecnic_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3170 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: TIPOS DE ESPECIFICACIONES TEC_id_tipo_especificacion_tecnic_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."TIPOS DE ESPECIFICACIONES TEC_id_tipo_especificacion_tecnic_seq" OWNED BY public."TIPOS DE ESPECIFICACIONES TECNICAS".id_tipo_especificacion_tecnica;
+
+
+--
+-- TOC entry 2953 (class 2604 OID 82218)
+-- Name: CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL id_local; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL" ALTER COLUMN id_local SET DEFAULT nextval('public."CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL_id_local_seq"'::regclass);
+
+
+--
+-- TOC entry 2954 (class 2604 OID 82219)
+-- Name: CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL id_caracteristicas_constructivas_l; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL" ALTER COLUMN id_caracteristicas_constructivas_l SET DEFAULT nextval('public."CARACTERISTICAS CONSTRUCTIVAS_id_caracteristicas_constructi_seq"'::regclass);
+
+
+--
+-- TOC entry 2951 (class 2604 OID 82199)
+-- Name: CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO id_servicio; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO" ALTER COLUMN id_servicio SET DEFAULT nextval('public."CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO_id_servicio_seq"'::regclass);
+
+
+--
+-- TOC entry 2952 (class 2604 OID 82200)
+-- Name: CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO id_caracteristica_constructiva_s; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO" ALTER COLUMN id_caracteristica_constructiva_s SET DEFAULT nextval('public."CARACTERISTICAS CONSTRUCTIVAS_id_caracteristica_constructiv_seq"'::regclass);
+
+
+--
+-- TOC entry 2949 (class 2604 OID 82126)
+-- Name: EQUIPAMIENTO - PROVEEDORES LOCALES id_equipamiento; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."EQUIPAMIENTO - PROVEEDORES LOCALES" ALTER COLUMN id_equipamiento SET DEFAULT nextval('public."EQUIPAMIENTO - PROVEEDORES LOCALES_id_equipamiento_seq"'::regclass);
+
+
+--
+-- TOC entry 2950 (class 2604 OID 82127)
+-- Name: EQUIPAMIENTO - PROVEEDORES LOCALES id_proveedor_local; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."EQUIPAMIENTO - PROVEEDORES LOCALES" ALTER COLUMN id_proveedor_local SET DEFAULT nextval('public."EQUIPAMIENTO - PROVEEDORES LOCALES_id_proveedor_local_seq"'::regclass);
+
+
+--
+-- TOC entry 2937 (class 2604 OID 81989)
+-- Name: EQUIPAMIENTOS id_tipo_equipamiento; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."EQUIPAMIENTOS" ALTER COLUMN id_tipo_equipamiento SET DEFAULT nextval('public."EQUIPAMIENTOS_id_tipo_equipamiento_seq"'::regclass);
+
+
+--
+-- TOC entry 2938 (class 2604 OID 81990)
+-- Name: EQUIPAMIENTOS id_equipamiento; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."EQUIPAMIENTOS" ALTER COLUMN id_equipamiento SET DEFAULT nextval('public."EQUIPAMIENTOS_id_equipamiento_seq"'::regclass);
+
+
+--
+-- TOC entry 2940 (class 2604 OID 82021)
+-- Name: ESPECIFICACIONES TECNICAS id_equipamiento; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."ESPECIFICACIONES TECNICAS" ALTER COLUMN id_equipamiento SET DEFAULT nextval('public."ESPECIFICACIONES TECNICAS_id_equipamiento_seq"'::regclass);
+
+
+--
+-- TOC entry 2941 (class 2604 OID 82022)
+-- Name: ESPECIFICACIONES TECNICAS id_especificaciones_tecnicas; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."ESPECIFICACIONES TECNICAS" ALTER COLUMN id_especificaciones_tecnicas SET DEFAULT nextval('public."ESPECIFICACIONES TECNICAS_id_especificaciones_tecnicas_seq"'::regclass);
+
+
+--
+-- TOC entry 2942 (class 2604 OID 82023)
+-- Name: ESPECIFICACIONES TECNICAS id_tipos_especifacion_tecnica; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."ESPECIFICACIONES TECNICAS" ALTER COLUMN id_tipos_especifacion_tecnica SET DEFAULT nextval('public."ESPECIFICACIONES TECNICAS_id_tipos_especifacion_tecnica_seq"'::regclass);
+
+
+--
+-- TOC entry 2946 (class 2604 OID 82091)
+-- Name: LOCAL -TIPO DE EQUIPAMIENTO id_local; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."LOCAL -TIPO DE EQUIPAMIENTO" ALTER COLUMN id_local SET DEFAULT nextval('public."LOCAL-TIPO DE EQUIPAMIENTO_id_local_seq"'::regclass);
+
+
+--
+-- TOC entry 2947 (class 2604 OID 82092)
+-- Name: LOCAL -TIPO DE EQUIPAMIENTO id_tipo_equipamiento; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."LOCAL -TIPO DE EQUIPAMIENTO" ALTER COLUMN id_tipo_equipamiento SET DEFAULT nextval('public."LOCAL-TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_seq"'::regclass);
+
+
+--
+-- TOC entry 2944 (class 2604 OID 82072)
+-- Name: LOCALES id_servicio; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."LOCALES" ALTER COLUMN id_servicio SET DEFAULT nextval('public."LOCALES_id_servicio_seq"'::regclass);
+
+
+--
+-- TOC entry 2945 (class 2604 OID 82073)
+-- Name: LOCALES id_local; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."LOCALES" ALTER COLUMN id_local SET DEFAULT nextval('public."LOCALES_id_local_seq"'::regclass);
+
+
+--
+-- TOC entry 2948 (class 2604 OID 82113)
+-- Name: PROVEEDORES LOCALES id_proveedor_local; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."PROVEEDORES LOCALES" ALTER COLUMN id_proveedor_local SET DEFAULT nextval('public."PROVEEDORES LOCALES_id_proveedor_local_seq"'::regclass);
+
+
+--
+-- TOC entry 2943 (class 2604 OID 82045)
+-- Name: SERVICIOS id_servicio; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."SERVICIOS" ALTER COLUMN id_servicio SET DEFAULT nextval('public."SERVICIOS_id_servicio_seq"'::regclass);
+
+
+--
+-- TOC entry 2936 (class 2604 OID 81976)
+-- Name: TIPO DE EQUIPAMIENTO id_tipo_equipamiento; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."TIPO DE EQUIPAMIENTO" ALTER COLUMN id_tipo_equipamiento SET DEFAULT nextval('public."TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_seq"'::regclass);
+
+
+--
+-- TOC entry 2939 (class 2604 OID 82006)
+-- Name: TIPOS DE ESPECIFICACIONES TECNICAS id_tipo_especificacion_tecnica; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."TIPOS DE ESPECIFICACIONES TECNICAS" ALTER COLUMN id_tipo_especificacion_tecnica SET DEFAULT nextval('public."TIPOS DE ESPECIFICACIONES TEC_id_tipo_especificacion_tecnic_seq"'::regclass);
+
+
+--
+-- TOC entry 3146 (class 0 OID 82215)
+-- Dependencies: 229
+-- Data for Name: CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL" (id_local, id_caracteristicas_constructivas_l, nombre_caract_constructiva_l, descrip_caract_exigible_l, descrip_caract_deseable_l) FROM stdin;
+1	1	Zocalo	sanitario	NA
+1	2	Paredes	con guardacarros	NA
+1	10	Puertas	luz minima de paso de 1.2 m	NA
+1	4	General	El area de Recepcion es para ingreso y registro del material a procesar. Contara con dos (2)\r\nventanillas una por cada tipo de material a ingresar para evitar posible contaminacion y\r\nmecanismos de seguridad planos de apoyo y posibilidad de apertura con sistema de enclavamiento\r\npara el eventual ingreso y/o egreso de equipos. El carro de transporte del material a esterilizar solo\r\npodra ingresar hasta el area sucia de la Central debiendo realizar luego la transferencia a carros\r\npropios de la central. El area de Clasificacion contara con mesada o mesa de trabajo deposito\r\ntransitorio de elementos y area libre para estacionamiento de carros.\r\nEn caso que la central no disponga de espacio fisico suficiente para contar con dos ventanillas se\r\ndebera evaluar la estrategia necesaria para evitar el cruce de materiales.	NA
+2	1	Zocalo	sanitario	NA
+2	2	Paredes	con guardacarros	NA
+2	10	Puertas	luz minima de paso de 1.2 m	NA
+2	8	Revestimiento	Se colocara revestimiento ceramico resistente con junta rectificada para proteccion\r\nhasta altura de cielorraso o pintura tipo epoxi	NA
+2	5	Instalacion Sanitaria	Es deseable cuenten con mesadas de acero inoxidable al igual que piletas\r\nprofundas. Se prohibe el uso de mesadas de madera. El dimensionamiento de los desagües debera\r\nresponder al volumen horario a desagotar segun los equipos correspondientes. Las piletas de piso\r\ndeberan ser cerradas. El agua de lavado debera estar debidamente ablandada y purificada.	NA
+2	7	Instalacion termomecanica	Todo el aire de este sector debe ser expulsado al exterior y sin\r\nrecirculacion. Debe contar con presion de aire negativa con respecto a las areas adyacentes se\r\npreviene asi la introduccion de contaminantes a las zonas limpias. Debe poseer un extractor de aire\r\nfuncionando permanentemente mientras se trabaja en el area (a razon de 10 cambios de aire por\r\nhora con una salida de aire al exterior). 	NA
+2	3	Gases Medicinales	Debe contar con una terminal de aire comprimido para el secado de elementos con lumen (tubuladuras trocares). El aire comprimido debera ser seco libre de particulas sin aceite y con filtrado microbiologico (022 micrones)	NA
+2	4	General	En esta area se realizan las actividades de lavado (limpieza manual limpieza por ultrasonidoslimpieza mecanica) secado desinfeccion. Esta area estara separada por una barrera fisica de las otras areas de la Central. La importancia de la separacion fisica se basa en la necesidad de evitar que aerosoles micro gotas y particulas de polvo sean transportados desde el area sucia a otros sectores por las corrientes de aire dado que en este sector (por el tipo de trabajo que alli se desarrolla: cepillado ultrasonido) se genera una gran cantidad de aerosoles. Se comunicara con las areas de recepcion de material y de acondicionamientomediante una barrera fisica que permita generar un diferencial de presion para la recepcion/entrega de los productos a procesar.Debe establecerse un diferencial de presion negativa con el entorno. El ingreso de personal debe comunicar esta area con un pasillo pero no con otra area de procesamiento para garantizar un diferencial de presion negativa con el entorno. El area de lavado comprendera mesadas de trabajo de acero inoxidable al igual que las piletas que ademas deben poseer dimensiones tales que permitan sumergir el material y lavarlo sumergido para reducir la produccion de aerosoles y salpicaduras hacia el operador. Debera contemplarse un sector libre de piso para aproximacion de carros de transporte y area libre para equipamiento. El sector de secado incluira mesada de apoyo con pileta profunda y provision de aire comprimido	NA
+\.
+
+
+--
+-- TOC entry 3143 (class 0 OID 82196)
+-- Dependencies: 226
+-- Data for Name: CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO" (id_servicio, id_caracteristica_constructiva_s, nombre_caract_constructiva_s, descripcion_caract_exigible_s, descripcion_carct_deseable_s) FROM stdin;
+1	1	generales	Las caracteristicas constructivas generales(obra e instalaciones) deberan cumplir con los requisitos de los codigos de construccion y reglamentoslocales asi como las normas tecnicas aplicables a cada una de las instalaciones(no se aceptaran cañerias a la vista)	NA
+1	10	pisos	Resistentes al desgaste abrasion e impacto de superficie lisa no porosa sin juntas (deseable) antideslizante continuo impermeable. Con materiales facilmente lavables que no sean afectados por los agentes quimicos utilizados habitualmente en la limpieza. Incombustible y sin emanacion de gases (en caso de siniestro). Como minimo la interseccion piso-pared en area Critica y Semi Critica debera formar angulo sanitario y no recto. Las piletas de piso en caso de existir deben ser de tapa ciega.	NA
+1	13	Zocalo	Recto o sanitario (a definir en caracteristicas especificas)	NA
+1	11	Paredes	idem caracteristicas para pisos. Lassuperficies seran sin molduras. Las esquinas con transito de carros deben estar protegidas con laminados o chapas de acero inoxidable. Es deseable contar con guardacarros en los locales que corresponda. Como minimo en areas Critica y Semi Critica las intersecciones pared-piso y pared-techo (deseable) deben formar angulos sanitarios y no rectos. Se recomienda pinturas a base de PVC epoxi poliurea poliuretano u otra condicion que reduzca el nivel de absorcion de agua.	NA
+1	4	Cielorraso	Superficie lavable incombustible y sin emanacion de gases (en caso de siniestro).	NA
+1	14	Ventanas	Deberan ser fijas. Con proteccion de visuales (sistemas de oscurecimiento externos al servicio).	NA
+1	18	diseño funcional	Debera organizarse siguiendo un camino unidireccional (ingreso-egreso) para evitar el cruce circulatorio entre materiales usados limpios y esterilizados comenzando en la ventanilla de recepcion y terminando en la ventanilla de dispensacion del material esterilizado. Por tanto estas ventanillas deben estar alejadas una de la otra. Los procesosinvolucradosson lossiguientesrecepcion y clasificacion limpieza secado inspeccion integral control de calidad acondicionamiento esterilizacion almacenamiento de material esteril y dispensacion de los mismos.	NA
+1	2	accesibilidad	la central de esterilizacionse situarapreferentemente en la central de abastecimiento y procesamiento del establecimiento o cercano al Centro Quirurgico y Terapias Intensivas atento aque son susmayores consumidores. En caso que la unidad se encuentre en piso distinto la institucion debera contar con un ascensor de servicio o montacargas (externo al area critica) para el traslado de los carros cerrados. El ancho de las circulaciones no debera ser menor a 1.10m. Se recomienda evitar el cruce de circulaciones (publicas de personal de abastecimiento y retiro de residuos). Los accesos posibilitaran el control de ingresos de personal autorizado y estaran debidamente identificados. Contara con una puerta para el ingreso/egreso del personal y otra para el ingreso de las materias primas (limpias). En el area de recepcion y clasificacion se debera disponer de una ventanilla para el ingreso del material sucio y en el area de egreso del material esteril se debera contar con una ventanilla con sistema de enclavamiento. Contaran con salidade emergenciasegun normas vigentes. El centro sera independiente y en todos los casos no deberan existir barreras arquitectonicas ajustandose a la normativa de accesibilidad vigente.	NA
+1	12	Puertas	El ancho libre de las puertas debera permitir el normal acceso de carro de transporte. La\rminima luz util admisible de paso sera de 080m. Las puertas deberan ser de doble contacto para\revitar fugas de aire	NA
+1	17	Revestimiento	Se colocara revestimiento resistente para proteccion hasta altura de cielorraso (a definir en caracteristicas especificas).	NA
+1	7	Instalacion Sanitaria	Provision de agua fria y caliente en lavamanos y/o en pileta sobre mesada. El\rdrenaje debe ser a pileta de piso cerrada con sifon para evitar olores desagradables	NA
+1	6	Electricidad – Iluminacion	Iluminacion natural y/o artificial segun norma. Contara con puesta a tierra de toda la instalacion. Las instalaciones poseeran dispositivos de seguridad electrica\nproteccion termomagnetica y disyuntor. Debera disponer entre otras con las siguientes corrientes debiles telefonia intercomunicadores y bocas de datos. Contara con instalacion o dispositivos para luz de emergencia en accesos circulaciones locales de clasificacion preparacion procesamiento y deposito de material esteril. Debera poseer un sistema de energia electrica de emergencia (grupo electrogeno general o propio con capacidad minima de funcionamiento para 4 horas) para los equipos y los locales detallados precedentemente. Respondera a lo establecido por el Reglamento de la Asociacion Electrotecnica Argentina para Instalaciones de uso hospitalario. La iluminacion sera clara intensa y no calorica. Se recomienda la utilizacion de artefactos de bajo consumo (tipo led). Ver tabla 1 pag 5 directriz de esterilizacion	NA
+1	5	Climatizacion	Podra ser garantizada por aire acondicionado calefaccion refrigeracion y ventilacion forzada. Los sistemas de ventilacion deben ser diseñados de manera que el aire fluya de areas limpias a sucias y luego se libere al exterior o a un sistema de recirculacion por filtro. Elsistemade ingresode aire es propio de la central no compartiendose con otros sectores o servicios. Las terminales de extraccion e inyeccion de aire deberan situarse en paredes opuestas. La extraccion cercana al piso y la inyeccion cercana al cielorraso. Los equipos de calor humedo deberan contar con extractor propio a fin de eliminar el calor que producen. El numero de renovaciones de aire por unidad de tiempo y la clasificacion del area variaran en funcion a la clase o riesgo intrinseco del producto a procesar. La clasificacion del area se puede establecer en base a la Normativa nacional o internacional vigente. No se permitira la instalacion de ventiladores en la CE pues generan gran turbulencia de polvo en el aire y tambien microorganismos que se proyectan desde el piso a las mesas de trabajo. Deben establecerse diferenciales de presion entre areas contiguas recomendando un diferencial de 5 a 20 Pascales (segun normativa vigente). Se acepta un diferencial de presion entre las areas contiguas en cascada mayor presion en area critica y semi critica (acondicionamiento descarga de esterilizador por vapor) y menor presion en las areas no criticas/ (area de lavado). Para las areas de esterilizacion por oxido de etileno area de desorcion y area de desinfeccion de alto nivel se debe considerar el concepto de “barrera” con mayor presion en el sector de ingreso especifica que en el exterior y que en la sala donde se encuentra el esterilizador. El area de desorcion de residuales de oxido de etileno y el area de desinfeccion de alto nivel deben tener menor presion que las areas circundantes con renovacion de aire propio de estos sectores y sin recirculacion. En centrales en que se prevea remodelacion y/o construccion se contemplaran BARRERAS FiSICAS\npara paso del personal entre areas contiguas con diferencial de presion. A efectos de preservar la calidad del aire en areas controladas no debe permitirse la apertura de ambas puertas y/o ventanas de las esclusas simultaneamente. "en las areas de procesamiento no se deben usar filtros terminales de baja o mediana eficiencia. Se recomienda el uso de filtros HEPA."	NA
+1	8	Gases Medicinales	Contara con el abastecimiento y suministro de aire comprimido (seco y filtrado)\rpara el secado de elementos (segun caracteristicas especificas). Preferentemente ira provisto de un\rfiltro terminal de 022 micrones. El suministro sera conforme a normativa vigente	NA
+1	9	Mobiliario fijo	Debera estar construido con materiales resistentes al contacto con los agentes de\rlimpieza y desinfeccion habitualmente utilizados; no sera excesivo y estara acorde a los\rrequerimientos del servicio.	NA
+1	15	Señaletica	Todos los locales deberan estarseñalizados segun su funcion	NA
+1	16	Seguridad	Deberadisponer de un Plan de evacuacion en caso de siniestros Salidas de emergencia\rdebidamente señalizadas Matafuegos autorizados segun autoridad competente y reglamentacion\rvigente (a base de CO2 o polvo quimico ABC) dispuestos en forma visible y accesible. Las centrales\rdeberan contar con medios de escape alternativo que corresponda segun norma. Debera contar con\rdetectores de humo en todosloslocales y pasillos de circulacion. Se deberan establecer Protocolos\rde Evacuacion con simulacros periodicos	NA
+5	1	generales	Todas las instalaciones deberan cumplir con los requisitos de los codigos de edificacion y reglamentos locales asi como las normas tecnicas aplicables a cada una de las instalaciones. Siendo el aguaun insumo critico debera garantizarse la calidad volumen (minimo un turno) y continuidad delsuministro (incluso en el caso de interrupcion porparte del proveedor) para el funcionamiento de los equipos de dialisis y de todos los locales que requieren provision de agua tratada. Se debera garantizar la limpieza de los depositos de agua con la periodicidad que corresponda segun la calidad del agua a su ingreso al predio y las normativas vigentes a nivel local y/o nacional.	NA
+5	10	pisos	Resistente al desgaste liso antideslizante lavable continuo impermeable. Incombustibles y sin emanacion de gases (en caso de siniestro)	NA
+5	13	Zocalo	Recto o sanitario (segun caracteristicas especificas)	NA
+5	11	Paredes	Superficie lavable lisa sin molduras. Incombustibles y sin emanacion de gases (en caso de siniestro).	NA
+5	4	Cielorraso	Superficie lavable lisa continua. Incombustible y sin emanacion de gases (en caso de siniestro).	NA
+5	14	Ventanas	Seran de abrir (aun si cuentan con acondicionamiento de aire). Con proteccion de visuales y mosquiteros	NA
+5	18	diseño funcional	El diseño debe sersecuencial de manera que el paciente ambulatorio tras el ingreso control preparacion y realizacion del tratamiento pase (segun corresponda) a la zona de recuperacion o al egreso directo. Esta organizacion secuencial permite ordenar la gestion de los pacientes evitando interferencias y cruces indeseables en el interiorde launidad. El diseño no admitiraninguna servidumbre de paso. Se debera asegurarla restriccion de uso de los locales donde se realiza el tratamiento del agua y el reprocesado de filtros (con deposito transitorio). Los diferentes locales deberan poseer iluminacion y ventilacion natural de acuerdo al codigo de cada jurisdiccion. El centro/servicio debera contar como minimo con un (1) sanitario para discapacitados. El centro/servicio de hemodialisis debe proporcionar al paciente confort termico mediante refrigeracion o calefaccion segun necesidad para obtener un ambiente acogedor y con un nivel de ruido moderado que asegure bienestar durante su permanencia.	NA
+5	2	accesibilidad	la unidad se situara preferentemente en la planta baja y facilitarael ingreso de pacientes ya sea caminando en sillade ruedas o en camilla. En caso de encontrarse la unidad de DIALISIS en pisos superiores la institucion debera contar con un ascensor camillero para su traslado que debera estar conectado al grupo electrogeno. El ancho de las circulaciones no debera ser menor a 1.10m. Se recomienda evitar el cruce y superposicion de circulaciones(publicas de personal de abastecimiento y retiro de residuos).Los accesos posibilitaran el control de ingresos y estaran debidamente identificados. Deberan contar con medios de salidaque permitan evacuarel establecimiento ante emergenciassegun normas vigentes. Elservicio sera independienteen todoslos casos no deberan existir barreras arquitectonicas ajustandose a la normativa de accesibilidad vigente.	NA
+5	12	Puertas	El ancho libre de las puertas debera permitir el normal acceso de una camilla o silla de ruedas. La luz util admisible de paso sera de 080m como minimo (o segun caracteristicas especificas).	NA
+5	17	Revestimiento	Sobre mesada (alto minimo +060m) y como fondo de piletas lavamanos (desde nivel de piso hasta +060 sobre el lavamanos y un ancho que sobrepase por lo menos 010m a cada uno de los lados de la pileta) se colocara revestimiento impermeable y resistente a golpes y productos quimicos.	NA
+5	7	Instalacion Sanitaria	Provision de agua fria y caliente en lavamanos y/o en pileta sobre mesada. El drenaje debe ser a pileta de piso con sifon para evitar olores desagradables	NA
+5	6	Electricidad – Iluminacion	Iluminacion natural y/o artificial segun norma. Contara con puesta a tierra de toda la instalacion. Las instalaciones poseeran dispositivos de seguridad electrica proteccion termomagnetica y disyuntordiferencial. Contara con instalacion o dispositivos para luz de emergencia en accesos circulaciones local de enfermeria salas de dialisis y sala de recuperacion transitoria. Debera poseer un sistema de energia electrica de emergencia mediante grupo electrogeno general del establecimiento o propio del servicio con capacidad minima de 23KVA por puesto y con autonomia para 4 horas. Debera abastecer ademas la sala de tratamiento de agua y el ascensor en aquellos centros que no se desarrollen en planta baja. Respondera a lo establecido por el Reglamento de la Comision Electrotecnica Internacional (IEC) para Instalaciones de uso hospitalario. Se recomienda la utilizacion de artefactos de bajo consumo (tipo led).	NA
+5	5	Climatizacion	Podra ser por aire acondicionado calefaccion y refrigeracion. Debera garantizarse la renovacion de aire	NA
+5	8	Gases Medicinales	Contara con abastecimiento y suministro de oxigeno medicinal (central o por tubo con manometro).	NA
+5	3	Accesibilidad geografica	En lo referente a los establecimientos de salud SIN internacion de tratamiento–ESSIT - Centro de dialisis estos deberan referenciarse a un establecimiento con internacion.Debera contar con buena accesibilidad fisica con certificado de no inundabilidad y brindar facilidades para el ingreso y salida de los vehiculos que transporten a los pacientes	NA
+5	15	Señaletica	Todosloslocales deberan estarseñalizadossegun su funcion y los puestos deberan identificarse individualmente.	NA
+5	16	Seguridad	Debera disponer de un Plan de evacuacion para casos de siniestros Medios de Salida debidamente señalizados y elementos de extincion segun reglamentacion vigente.	NA
+\.
+
+
+--
+-- TOC entry 3140 (class 0 OID 82123)
+-- Dependencies: 223
+-- Data for Name: EQUIPAMIENTO - PROVEEDORES LOCALES; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."EQUIPAMIENTO - PROVEEDORES LOCALES" (id_equipamiento, id_proveedor_local) FROM stdin;
+11	1
+6	2
+7	2
+8	2
+13	2
+14	2
+15	2
+16	3
+17	3
+2	6
+3	6
+4	6
+9	2
+7	5
+8	5
+9	5
+7	4
+8	4
+9	4
+1	10
+19	12
+20	12
+\.
+
+
+--
+-- TOC entry 3121 (class 0 OID 81986)
+-- Dependencies: 204
+-- Data for Name: EQUIPAMIENTOS; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."EQUIPAMIENTOS" (id_tipo_equipamiento, id_equipamiento, nombre_de_venta, marca, modelo, descripcion_gral, manual_tecnico, dispocicion_anmat, instalacion_y_o_equip_auxiliar_requerido, plano_de_instalacion_gral) FROM stdin;
+4	1	Lavadora	Getinge	46-4	NA	NA	NA	NA	NA
+4	2	Lavadora	at-os	AWD655-10A SC Puerta corrediza automatica	NA	NA	NA	Agua caliente(Opcional para acelerar los ciclos) /Agua fria/ Agua blanda/ Desague	NA
+4	3	Lavadora	at-os	Modelo AWD655-8, bajo mesada	NA	NA	NA	Agua caliente(Opcional para acelerar los ciclos) /Agua fria/ Agua blanda/ Desague	NA
+4	4	Lavadora	at-os	AWD655-10SC Puerta en Bisagra	NA	NA	NA	Agua caliente(Opcional para acelerar los ciclos) /Agua fria/ Agua blanda/ Desague	NA
+4	5	Lavadora	Matachana/ KEN	Generico	NA	NA	NA	\N	NA
+4	6	Lavadora	Miele	PG8582	NA	NA	NA	\N	NA
+4	7	Lavadora	Miele	PG8582CD	NA	NA	NA	Agua caliente /Agua fria/ Agua blanda/ Desague	NA
+4	8	Lavadora	Miele	PG 8562 	NA	NA	NA	Agua caliente /Agua fria/ Agua blanda/ Desague	NA
+4	9	Lavadora	Steelco	DS 610/1/2 SL	DS 610 1 SL:  Puerta Simple  DS 610 2 SL : Doble puerta	NA	NA	\N	NA
+17	10	Estufa de esterilizacion y secado	MMM Medcenter	Venticel 55	https://www.mmm-medcenter.es/venticell-61-venticell-55---ecoline16	NA	NA	\N	NA
+17	11	Esterilizador por calor seco	CECAR	EPC XXI Doble puerta 	Para esterilizacion en el ambito hospitalario de productos medicos que soportan elevadas temperaturas. -la operacion del equipo no requiere desagüe\n-La Operacion del equipo no contamina el ambiente, la extraccion de aire es la necesaria a la climatizacion\n-La sala de maquinas del esterilizador (area de acceso a sus partes y componentes), debe contar con\nAdecuada iluminacion, que permita realizar correctamente los trabajos de mantenimiento del equipo	http://www.cecar.com.ar/wp-content/uploads/2021/08/FOLLETO-ESTUFA-REV4.pdf ;  https://drive.google.com/drive/folders/132lyBS_wJJaoH0H38A38hfWNvwcqhABb	https://helena.anmat.gob.ar/uploads/pdfs/dc_33991_30708506946_6801.pdf?rnd=45db12e4-0c02-4073-9063-c454a484cb60	suministro de aire comprimido o compresor de aire;  y ablandador de agua	https://www.cecar.com.ar/plano-tipo-esterilizador-por-calor-seco-epc-xxi/
+17	12	Esterilizador por calor seco	Star	DRY SD-600D	Esterilizador por calor seco para instrumental de uso odontologico	\N	http://www.anmat.gov.ar/boletin_anmat/octubre_2013/Dispo_6615-13.pdf	NA	NA
+18	13	Plasma	Sterrad	 100s	NA	NA	NA	NA	NA
+18	14	Plasma	Shinva	 PS100X 	NA	NA	NA	NA	NA
+18	15	Plasma	Sterrad	100 NX	NA	NA	NA	NA	NA
+16	16	Autoclave	Hogner	VAP 5001 449 E/VL/DP Medical.	Doble puerta	NA	NA	suministro de aire comprimido o compresor de aire;  y ablandador de agua	NA
+16	17	Autoclave	Hogner	VAP 5001  662a E/VL/DP Medical.	Doble puerta	NA	NA	suministro de aire comprimido o compresor de aire;  y ablandador de agua	NA
+16	18	Autoclave 	FAETA	ISV 500	Doble puerta	NA	NA	suministro de aire comprimido o compresor de aire;  y ablandador de agua	NA
+16	19	Autoclave 	SYSTEC	Systec HX-150 2D	Doble puerta	NA	NA	suministro de aire comprimido o compresor de aire;  y ablandador de agua	NA
+16	20	Autoclave 	SYSTEC	Systec HX-90 2D	Doble puerta	NA	NA	suministro de aire comprimido o compresor de aire;  y ablandador de agua	NA
+\.
+
+
+--
+-- TOC entry 3127 (class 0 OID 82018)
+-- Dependencies: 210
+-- Data for Name: ESPECIFICACIONES TECNICAS; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."ESPECIFICACIONES TECNICAS" (id_equipamiento, id_especificaciones_tecnicas, id_tipos_especifacion_tecnica, nombre, dato_magnitud, unidades, descripcion_particular, plano_de_instalacion_particular) FROM stdin;
+10	1	1	Volumen util	55	litro	NA	NA
+10	2	2	Altura externa	680	mm	NA	NA
+10	3	2	Profundidad externa	640	mm	NA	NA
+10	4	2	Ancho externo	620	mm	NA	NA
+10	5	2	Altura interna	350	mm	NA	NA
+10	6	2	Profundidad interna	370	mm	NA	NA
+10	7	2	Ancho interno	400	mm	NA	NA
+10	8	1	Cant. bandejas 	2	Cantidad	NA	NA
+10	9	3	Consumo electrico	1.3	kW	NA	NA
+10	10	3	Corriente	5.6	A	NA	NA
+10	11	4	Tiempo	49	minutos	necesario para alcanzar 250 °C con conducto de aire cerrado y voltaje 230 V	NA
+10	12	4	Temperatura de trabajo min 	10	°C	NA	NA
+10	18	5	Disipacion Termica	590	W	NA	NA
+10	29	7	Ruido	NA	NA	NA	NA
+10	31	4	Renovacion de aire a 250°C	45	Renovaciones por hora	NA	NA
+10	34	1	Suministro electrico v	220	V	NA	NA
+10	35	3	Sumnistro f	50	Hz	NA	NA
+10	36	3	Pontecia en stand by	5	W	NA	NA
+10	37	4	Temp max de trabajo 	250	°C	por arriba de la temperatura ambiente	NA
+11	38	1	Volumen util	544	Litros	NA	NA
+11	39	2	Altura externa	2000	mm	NA	NA
+11	40	2	Profundidad externa	800	mm	NA	NA
+11	41	2	Ancho externo	1110	mm	NA	NA
+11	42	2	Altura interna	600	mm	NA	NA
+11	43	2	Profundidad interna	650	mm	NA	NA
+11	44	2	Ancho interno	600	mm	NA	NA
+11	45	1	Cantidad de camaras	2	Cantidad	NA	NA
+11	46	3	Consumo electrico	6	KVA	NA	NA
+11	47	4	-Emision de Calor en proceso por cada ciclo de esterilizacion	280	kcal / hora	NA	NA
+11	48	4	-Emision de Calor encendido sin procesar	100	kcal / hora	NA	NA
+11	49	9	Presion de aire minima	6	bar	a 03 metros de altura	NA
+11	50	9	Caudal de aire minimo	40	litro/minuto	desde linea	NA
+11	51	4	Temperatura ambiente	35	°C	El recinto donde se encuentra el esterilizador y la sala de maquinas para el mantenimiento	NA
+11	52	3	Suministro electrico v	380	V	Vx3 + N+PE	NA
+11	53	3	Sumnistro f	50	HZ	NA	NA
+11	54	3	Disyuntor	25	A	NA	NA
+11	55	3	Termomagnetica	Las requeridas	Cantidad	NA	NA
+13	56	1	Volumen util	100	l	NA	NA
+13	57	2	Altura externa	1660	mm	NA	NA
+13	58	2	Profundidad externa	1020	mm	NA	NA
+13	59	2	Ancho externo	765	mm	NA	NA
+13	60	2	Altura interna	NA	NA	NA	NA
+13	61	2	Profundidad interna	810	mm	NA	NA
+13	62	2	Ancho interno	510	mm	NA	NA
+13	63	3	Suministro electrico v	380	V	NA	NA
+13	64	3	Sumnistro f	50	hz	NA	NA
+13	65	3	Corriente	16	A	Conexion hembera tipo Steck seccion de cable no menor a 4 mm2	NA
+13	66	3	Consumo electrico	600	Wh	NA	NA
+13	67	5	Disipacion Termica	562	Wh	NA	NA
+\.
+
+
+--
+-- TOC entry 3135 (class 0 OID 82088)
+-- Dependencies: 218
+-- Data for Name: LOCAL -TIPO DE EQUIPAMIENTO; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."LOCAL -TIPO DE EQUIPAMIENTO" (id_local, id_tipo_equipamiento, equipamiento_minimo_pngcam, equipamiento_deseable_pngcam) FROM stdin;
+1	1	1 por local Se nombra pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio
+1	2	1 por local Se nombra pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+1	3	1 por local Se nombra pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+1	27	1 por local Se nombra pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+2	4	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+2	5	1 por local Se nombra pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+2	6	1 por local Se nombre pero la cantidad no se especifica en PNGCAM ( No se ha visto su uso en los servicios de la Ciudad o Instituciones Privada son equipos caros para el secado se utilizan pistolas de secado)	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+3	7	No exigible	Recomendado segun la necesidad del servicio
+3	8	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+3	9	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+3	10	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+4	11	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+4	12	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+4	13	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+4	22	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+4	27	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+4	8	No exigible	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+4	15	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+5	16	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+5	17	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+5	18	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+5	19	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+5	20	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+5	21	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+5	22	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+5	23	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+5	27	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+5	5	1 por local Se nombra pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+5	25	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+6	27	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+6	26	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+7	27	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+8	27	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+8	22	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+8	25	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+8	2	1 por local Se nombre pero la cantidad no se especifica en PNGCAM	Segun necesidad del servicio Cantidad no especificada en PNGCAM
+31	28	1 por local  Se nombra pero la cantidad no se especifica en PNGCAM	No especifica Segun demanda del servicio.
+31	29	1 en la unidad servicio o centro de dialisis. Si se trata de un centro de dialisis debera contar con cardiodesfibrilador	No especifica Segun demanda del servicio.
+32	30	3 puestos  3 Sillones	No especifica Segun demanda del servicio.
+32	31	3 puestos  3 Maquinas de Hemodialisis	Se recomienda contar con una maquina de hemodialisis de respaldo o emergencia por cada 12 puestos de tratamiento.
+33	32	No es exigible si existe lavado manual de filtros pero esto se debera contar con sistema de medicion de volumen de dializador y sistema de dosificacion de desinfectante dentro del dializador	No especifica Segun demanda del servicio.
+33	11	1 por cada local.	No especifica Segun demanda del servicio.
+34	33	1 por cada local.	No especifica Segun demanda del servicio.
+35	34	1 por cada local.	No especifica Segun demanda del servicio.
+36	28	1 por cada local.	No especifica Segun demanda del servicio.
+\.
+
+
+--
+-- TOC entry 3132 (class 0 OID 82069)
+-- Dependencies: 215
+-- Data for Name: LOCALES; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."LOCALES" (id_servicio, id_local, nombre_del_local, superficie_exigible_en_m2, superficie_deseable_en_m2, zona_y_o_area_y_o_unidad) FROM stdin;
+1	1	Recepcion y Clasificacion	10	14	Area complementariano critica
+1	2	Limpieza y Secado	NA	NA	Area complementariano critica
+1	3	Control de Calidad	NA	NA	Unidad funcional semi critica
+1	4	Acondicionamiento y envasado	NA	NA	Unidad funcional semi critica
+1	5	Esterilizacion con equipos de frontera	NA	NA	Unidad funcional  delimita zona semicritica de zona critica
+1	6	Deposito de material esterill	NA	NA	Unidad funcional critica
+1	7	Estacionamiento transitorio de carros	NA	NA	NA
+1	8	Entrega de material esteril	NA	NA	NA
+1	9	Vestuarios con sanitarios para personal	NA	NA	NA
+1	10	Trasferencia ambulatoria	NA	NA	NA
+1	11	Oficina- Jefatura	NA	NA	NA
+1	12	Puesto de trabajo administrativo	NA	NA	NA
+1	13	Estar de personal	NA	NA	NA
+1	14	Office de limpieza	NA	NA	NA
+1	15	Contenedor-Desposito de residuos domiciliarios	NA	NA	NA
+1	16	Contenedor-Desposito de residuos biopatogenico	NA	NA	NA
+1	17	Placard-Sala de mantenimiento	NA	NA	NA
+2	18	UR	NA	NA	UR
+2	19	UTI 1	NA	NA	UTI 1
+2	20	UTI2	NA	NA	UTI2
+2	21	UTIM	NA	NA	UTIM
+3	22	URP 	NA	NA	URP 
+3	23	UTIP 1	NA	NA	UTIP 1
+3	24	UTIP 2	NA	NA	UTIP 2
+3	25	UTIP M	NA	NA	UTIP M
+4	26	Shock Room	NA	NA	NA
+4	27	Habitacion de observacion	NA	NA	NA
+4	28	Office de enfermeria	NA	NA	NA
+4	29	Area de apoyo	NA	NA	NA
+4	30	Laboratorio	NA	NA	NA
+5	31	Sala Hemodialisis Gral	NA	NA	Unidad funcional en zona  semi-restringida
+5	32	Sala  Hemodialisis- Puestos	NA	NA	Unidad funcional en zona  semi-restringida
+5	33	Sala de reprocesamiento de dializadores	NA	NA	Area complementaria en zona restringida
+5	34	Deposito de medicamentos	NA	NA	Area complementaria en zona restringida
+5	35	Estar de personal	NA	NA	Area complementaria en zona semirestringida
+5	36	Preparacion del paciente	NA	NA	Area complementaria en zona semirestringida
+5	37	Sala de aislados	NA	NA	Unidad funcional en zona  semi-restringida
+5	38	Estacionamiento transitorio	NA	NA	Area complementaria en zona semirestringida
+5	40	Consultorio / Gabinete	NA	NA	Area complementaria en zona semirestringida
+5	41	Sala de Reanimacion	NA	NA	Area complementaria en zona semirestringida
+5	42	Office de Enfermeria	NA	NA	Area complementaria en zona semirestringida
+5	43	Office de Alimentacion para pacientes	NA	NA	Area complementaria en zona semirestringida
+5	45	Dialisis peritoneal	NA	NA	Dialisis peritoneal
+5	46	Dialisis peritoneal en caso de ESSIT5 y/o establecimiento exclusivo para Dialisis Peritoneal	NA	NA	Dialisis peritoneal
+\.
+
+
+--
+-- TOC entry 3137 (class 0 OID 82110)
+-- Dependencies: 220
+-- Data for Name: PROVEEDORES LOCALES; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."PROVEEDORES LOCALES" (id_proveedor_local, nombre_proveedor_local, rubro, telefono, pagina_web, antecedentes, email) FROM stdin;
+1	CECAR	Esterilizacion	54 (011) 4767.5173	https://www.cecar.com.ar/	Proveedor del estado en CABA	info@cecar.com.ar
+2	Laboratorios Igaltex	Laboratorios	(+54 11) 7078-0613	https://www.igaltex.com/es	Proveedor del estado en CABA	consultas@igaltex.com.ar
+3	Industrias Hogner S.A.	Esterilizacion	54 (11) 5650-6200	https://hogner.com/?gclid=CjwKCAjw9NeXBhAMEiwAbaY4lu81aunKLa3YKJqDProxe1qeIIE2-kJR5k3N0lwncth7aGvi6xbXaBoCH3UQAvD_BwE	Proveedor del estado en CABA	industrias@hogner.com
+4	Instrumentalia	NA	NA	NA	NA	NA
+5	Lastech	NA	NA	NA	NA	NA
+6	Kims S.R.L	Esterilizacion	(54-11) 4838-1000	https://kims.com.ar/en/	Proveedor del estado en CABA	ventas@kims.com.ar
+7	Antonio Matachana S.A 	Laboratorios	34 934 86 87 00	https://www.matachana.com/	Proveedor del estado en CABA	NA
+8	One Lab	Laboratorios	NA	https://www.onelab.com.ar/lavador-automatico-para-material-de-laboratorio-steelco-lab-500cl	NA	NA
+9	CORPO MEDICA S.A	Laboratorios	(+54 911) 5353 . 1111	https://corpomedica.com.ar/	Proveedor del estado en CABA	info@corpomedica.com.ar
+10	AGIMED SRL	Salud 	54 11) 4573.6600	https://www.agimed.com.ar/	Proveedor del estado en CABA	info@agimed.com.ar
+11	FAETA S.A.	Esterilizacion odontoligia y laboratorios	(54) (11) 4205-0729(54) (11) 4205-1357(54) (11) 4205-2223	https://www.faeta.com.ar/	Proveedor del estado en CABA	faeta@faeta.com.ar
+12	Wasserberg	Laboratorios	NA	https://www.wasserberg.com/	Proveedor del estado en CABA	NA
+\.
+
+
+--
+-- TOC entry 3129 (class 0 OID 82042)
+-- Dependencies: 212
+-- Data for Name: SERVICIOS; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."SERVICIOS" (id_servicio, nombre_del_servicio, nombre_en_pngcam, directriz_pngcam) FROM stdin;
+1	Esterilizacion	Centrales de Esterilizacion y Reprocesamiento de Productos Médicos en Establecimientos de Salud y Establecimientos Exclusivos de Esterilizacion Externos	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/33773.html
+2	Cuidados Intensivos adultos	Unidades de Cuidados Intensivos	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/23023.html
+3	Cuidados Intensivos e intermedios pediatricos	Unidades de Cuidados Intensivos e Intermedios Pediatricos en Establecimientos Asistenciales	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/23022.html
+4	Guardia	 Servicios de Guardia en los Establecimientos Asistenciales	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/3251.html
+5	Dialisis	Hemodialisis Servicios o Unidades de Dialisis	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/34153.html
+6	Lactario	Centros de Lactancia Materna	\N
+7	Imagenes	Diagnostico y Tratamiento por Imagenes	https://e-legis-ar.msal.gov.ar/legisalud/migration/pdf/msres3590_2021.pdf
+8	Centros Quirurgicos nueva	Centro Quirurgico en Establecimientos con Internacion - Estacion de Anestesia 	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/35168.html
+9	Consultorios	Consultorios Individuales Policonsultorios y Servicios de Atencion Ambulatoria	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/33773.html
+10	CONE	(CONE)  Todos los establecimientos de salud de nivel II y III publicos o privados donde se atienden partos	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/33321.html
+11	Endoscopia	 Endoscopia Digestiva	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/33194.html
+12	Hemodinamia	Hemodinamia en areas de Diagnostico y Terapéutica Endovascular por Cateterismo Cirugia Endovascular y Radiologia Intervencionista	https://www.boletinoficial.gob.ar/detalleAviso/primera/186020/20180621
+13	Cirugia Ambulatoria	Cirugia Ambulatoria	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/29507.html
+14	Ambulancias	Moviles de Traslados – Servicios Terrestres	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/29122.html
+15	Cuidados Paliativos	Cuidados Paliativos	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/26683.html
+16	Leche Materna	Bancos de leche Humana en los establecimientos Asistenciales	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/24532.html
+17	Emergencias	Servicios de urgencia y emergencia	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/25681.html
+18	Cuidados Intensivos adultos	Unidades de Cuidados Intensivos	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/23023.html
+19	Cuidados Intensivos e intermedios pediatricos	Unidades de Cuidados Intensivos e Intermedios Pediatricos en Establecimientos Asistenciales	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/23022.html
+20	Neo	Servicios de Cuidados Neonatales	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/19429.html
+21	Cirugia	 area de Cirugia de los Establecimientos Asistenciales	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/3426.html
+22	Electrofisiologia	areas de Electrofisiologia y Estimulacion Cardiacas	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/11980.html
+23	Centros de Atencion Primaria	Centros de Atencion Primaria	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/11890.html
+24	Anatomia Patologia	Servicios de Patologia (Anatomia Patologica) y Laboratorios de Patologia (Anatomia Patologica)	https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/html/7124.html
+\.
+
+
+--
+-- TOC entry 3118 (class 0 OID 81973)
+-- Dependencies: 201
+-- Data for Name: TIPO DE EQUIPAMIENTO; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."TIPO DE EQUIPAMIENTO" (id_tipo_equipamiento, nombre_pngcam, categoria, descripcion_pngcam, ecri) FROM stdin;
+1	Computadora con sistema de registro codigo	Otros	NA	10-977
+2	Impresora laser	Otros	NA	NA
+3	Impresora de etiquetas con codigo	Otros	Etiquetas aptas para procesamiento	NA
+4	Lavadoras mecanicas automaticas 	Medico	Con o sin modulo de ultrasonido con entrada de agua fria y caliente sistema de enjuague y secado	14-413
+5	Ablandador de agua con filtro de particulas y posterior filtro de carbon activado	 Auxiliar	NA	11-145
+6	Aireador y/o cabina de secado	Medico	NA	15-812
+7	Elementos para la lectura de ATP y de Proteinas	Medico	NA	NA
+8	Lupa o lentes de aumento con luz	Medico	NA	15-652
+9	Balanza granataria de mesa (hasta 30 kg)	Medico	NA	18-450
+10	Balanza analitica	Otros	NA	18-449
+11	Termoselladoras	Otros	NA	15-786
+12	Soporte para distintos tipos de envolturas	Otros	NA	13-858
+13	Cinteros para los distintos procesos de esterilizacion	Otros	NA	NA
+15	cortadora de gasas	Medico	NA	15-569
+16	Equipo esterilizador calor humedo a presion superior a la normal	Medico	Con generacion propia de vapor y o conectado al vapor central del establecimiento puerta automatica simple o doble. La tendencia actual  por cuestiones de seguridad es la de adquirir equipos con caldera propia	13-746
+17	Esterilizacion por calor seco	Medico	doble puerta de 180 a 250 litros con circulacion de aire forzada	13-739
+18	Unidad plasma peroxido de hidrogeno	Medico	de 50 a 100 litros	NA
+19	Esterilizador por oxido de etileno	Medico	. El equipo podra esterilizar a 37Â°C o 55/60 Â° C.	13-740
+20	Esterilizador por formaldehido 	Medico	de 130 litros. El equipo podra esterilizar a 60Â°C o 78Â° C.	13-741
+21	Incubadoras por procesos o lectoincubadoras	Medico	NA	12-112
+22	Terminal informatica 	Otros	NA	16-902
+23	Etiquetadoras de loteo	Otros	NA	NA
+25	Lector de codigo de barras	Otros	NA	17-220
+26	Estanterias moviles con repisas enrejadas	Mobiliario	NA	12-142
+27	Carros	Mobiliario	NA	10-635
+28	Balanza adultos	Otros	adaptada para discapacitados motores	10-261
+29	Equipamiento para reanimacion cardiorrespiratoria	Medico	NA	11-132
+30	Sillon	Otros	Superficielavable. Con posicionamiento variable posicion final de Trendelenburg	NA
+31	Equipo de Dialisis	Medico	Maquinas y o aparatos para aplicacion de dialisis con proporcionadora individual de dializado y ultra filtracion controlada provistos de indicadores para el control de la presion sanguinea eferente del hemodializador temperaturadel dializado con circuito de proteccion conductividad  detector de fuga de sangre  flujo de bañoo y detectores de burbujas de aire. Deberan poseersistemas de alarma y monitor de presion negativa	NA
+32	Equipo repocesador automatico de filtros 	Medico	 para lavado medicion de volumen medicion de integridad de fibras y desinfeccion	NA
+33	Heladera Medicamentos	Medico	Para medicamentos conectada al grupo electrogeno	NA
+34	Heladera Alimentos	Otros	Para alimentos	NA
+37	Camilla	Medico	NA	NA
+\.
+
+
+--
+-- TOC entry 3123 (class 0 OID 82003)
+-- Dependencies: 206
+-- Data for Name: TIPOS DE ESPECIFICACIONES TECNICAS; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."TIPOS DE ESPECIFICACIONES TECNICAS" (id_tipo_especificacion_tecnica, tipo_especificacion_tecnica) FROM stdin;
+1	Capacidad 
+2	Dimensiones
+3	Electrica
+4	Termomecanica
+5	Sanitaria
+6	Estructural
+7	Sonora
+8	Otras
+9	aire comprimdo
+10	oxigeno
+11	gas
+\.
+
+
+--
+-- TOC entry 3171 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL_id_local_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL_id_local_seq"', 1, false);
+
+
+--
+-- TOC entry 3172 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO_id_servicio_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO_id_servicio_seq"', 1, false);
+
+
+--
+-- TOC entry 3173 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: CARACTERISTICAS CONSTRUCTIVAS_id_caracteristica_constructiv_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."CARACTERISTICAS CONSTRUCTIVAS_id_caracteristica_constructiv_seq"', 1, false);
+
+
+--
+-- TOC entry 3174 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: CARACTERISTICAS CONSTRUCTIVAS_id_caracteristicas_constructi_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."CARACTERISTICAS CONSTRUCTIVAS_id_caracteristicas_constructi_seq"', 1, false);
+
+
+--
+-- TOC entry 3175 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: EQUIPAMIENTO - PROVEEDORES LOCALES_id_equipamiento_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."EQUIPAMIENTO - PROVEEDORES LOCALES_id_equipamiento_seq"', 1, false);
+
+
+--
+-- TOC entry 3176 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: EQUIPAMIENTO - PROVEEDORES LOCALES_id_proveedor_local_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."EQUIPAMIENTO - PROVEEDORES LOCALES_id_proveedor_local_seq"', 1, false);
+
+
+--
+-- TOC entry 3177 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: EQUIPAMIENTOS_id_equipamiento_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."EQUIPAMIENTOS_id_equipamiento_seq"', 1, false);
+
+
+--
+-- TOC entry 3178 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: EQUIPAMIENTOS_id_tipo_equipamiento_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."EQUIPAMIENTOS_id_tipo_equipamiento_seq"', 1, false);
+
+
+--
+-- TOC entry 3179 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: ESPECIFICACIONES TECNICAS_id_equipamiento_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."ESPECIFICACIONES TECNICAS_id_equipamiento_seq"', 1, false);
+
+
+--
+-- TOC entry 3180 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: ESPECIFICACIONES TECNICAS_id_especificaciones_tecnicas_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."ESPECIFICACIONES TECNICAS_id_especificaciones_tecnicas_seq"', 1, false);
+
+
+--
+-- TOC entry 3181 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: ESPECIFICACIONES TECNICAS_id_tipos_especifacion_tecnica_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."ESPECIFICACIONES TECNICAS_id_tipos_especifacion_tecnica_seq"', 1, false);
+
+
+--
+-- TOC entry 3182 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: LOCAL-TIPO DE EQUIPAMIENTO_id_local_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."LOCAL-TIPO DE EQUIPAMIENTO_id_local_seq"', 1, false);
+
+
+--
+-- TOC entry 3183 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: LOCAL-TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."LOCAL-TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_seq"', 1, false);
+
+
+--
+-- TOC entry 3184 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: LOCALES_id_local_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."LOCALES_id_local_seq"', 1, false);
+
+
+--
+-- TOC entry 3185 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: LOCALES_id_servicio_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."LOCALES_id_servicio_seq"', 1, false);
+
+
+--
+-- TOC entry 3186 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: PROVEEDORES LOCALES_id_proveedor_local_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."PROVEEDORES LOCALES_id_proveedor_local_seq"', 1, false);
+
+
+--
+-- TOC entry 3187 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: SERVICIOS_id_servicio_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."SERVICIOS_id_servicio_seq"', 1, false);
+
+
+--
+-- TOC entry 3188 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_seq"', 1, false);
+
+
+--
+-- TOC entry 3189 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: TIPOS DE ESPECIFICACIONES TEC_id_tipo_especificacion_tecnic_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."TIPOS DE ESPECIFICACIONES TEC_id_tipo_especificacion_tecnic_seq"', 1, false);
+
+
+--
+-- TOC entry 2976 (class 2606 OID 82224)
+-- Name: CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL"
+    ADD CONSTRAINT "CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL_pkey" PRIMARY KEY (id_caracteristicas_constructivas_l, id_local);
+
+
+--
+-- TOC entry 2974 (class 2606 OID 82205)
+-- Name: CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO"
+    ADD CONSTRAINT "CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO_pkey" PRIMARY KEY (id_caracteristica_constructiva_s, id_servicio);
+
+
+--
+-- TOC entry 2972 (class 2606 OID 82129)
+-- Name: EQUIPAMIENTO - PROVEEDORES LOCALES EQUIPAMIENTO - PROVEEDORES LOCALES_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."EQUIPAMIENTO - PROVEEDORES LOCALES"
+    ADD CONSTRAINT "EQUIPAMIENTO - PROVEEDORES LOCALES_pkey" PRIMARY KEY (id_equipamiento, id_proveedor_local);
+
+
+--
+-- TOC entry 2958 (class 2606 OID 81995)
+-- Name: EQUIPAMIENTOS EQUIPAMIENTOS_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."EQUIPAMIENTOS"
+    ADD CONSTRAINT "EQUIPAMIENTOS_pkey" PRIMARY KEY (id_equipamiento);
+
+
+--
+-- TOC entry 2962 (class 2606 OID 82028)
+-- Name: ESPECIFICACIONES TECNICAS ESPECIFICACIONES TECNICAS_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."ESPECIFICACIONES TECNICAS"
+    ADD CONSTRAINT "ESPECIFICACIONES TECNICAS_pkey" PRIMARY KEY (id_especificaciones_tecnicas);
+
+
+--
+-- TOC entry 2968 (class 2606 OID 82097)
+-- Name: LOCAL -TIPO DE EQUIPAMIENTO LOCAL-TIPO DE EQUIPAMIENTO_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."LOCAL -TIPO DE EQUIPAMIENTO"
+    ADD CONSTRAINT "LOCAL-TIPO DE EQUIPAMIENTO_pkey" PRIMARY KEY (id_local, id_tipo_equipamiento);
+
+
+--
+-- TOC entry 2966 (class 2606 OID 82078)
+-- Name: LOCALES LOCALES_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."LOCALES"
+    ADD CONSTRAINT "LOCALES_pkey" PRIMARY KEY (id_local);
+
+
+--
+-- TOC entry 2970 (class 2606 OID 82118)
+-- Name: PROVEEDORES LOCALES PROVEEDORES LOCALES_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."PROVEEDORES LOCALES"
+    ADD CONSTRAINT "PROVEEDORES LOCALES_pkey" PRIMARY KEY (id_proveedor_local);
+
+
+--
+-- TOC entry 2964 (class 2606 OID 82050)
+-- Name: SERVICIOS SERVICIOS_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."SERVICIOS"
+    ADD CONSTRAINT "SERVICIOS_pkey" PRIMARY KEY (id_servicio);
+
+
+--
+-- TOC entry 2956 (class 2606 OID 81981)
+-- Name: TIPO DE EQUIPAMIENTO TIPO DE EQUIPAMIENTO_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."TIPO DE EQUIPAMIENTO"
+    ADD CONSTRAINT "TIPO DE EQUIPAMIENTO_pkey" PRIMARY KEY (id_tipo_equipamiento);
+
+
+--
+-- TOC entry 2960 (class 2606 OID 82011)
+-- Name: TIPOS DE ESPECIFICACIONES TECNICAS TIPOS DE ESPECIFICACIONES TECNICAS_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."TIPOS DE ESPECIFICACIONES TECNICAS"
+    ADD CONSTRAINT "TIPOS DE ESPECIFICACIONES TECNICAS_pkey" PRIMARY KEY (id_tipo_especificacion_tecnica);
+
+
+--
+-- TOC entry 2986 (class 2606 OID 82225)
+-- Name: CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL_id_local_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL"
+    ADD CONSTRAINT "CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL_id_local_fkey" FOREIGN KEY (id_local) REFERENCES public."LOCALES"(id_local);
+
+
+--
+-- TOC entry 2985 (class 2606 OID 82206)
+-- Name: CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO_id_servicio_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO"
+    ADD CONSTRAINT "CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO_id_servicio_fkey" FOREIGN KEY (id_servicio) REFERENCES public."SERVICIOS"(id_servicio);
+
+
+--
+-- TOC entry 2983 (class 2606 OID 82130)
+-- Name: EQUIPAMIENTO - PROVEEDORES LOCALES EQUIPAMIENTO - PROVEEDORES LOCALES_id_equipamiento_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."EQUIPAMIENTO - PROVEEDORES LOCALES"
+    ADD CONSTRAINT "EQUIPAMIENTO - PROVEEDORES LOCALES_id_equipamiento_fkey" FOREIGN KEY (id_equipamiento) REFERENCES public."EQUIPAMIENTOS"(id_equipamiento);
+
+
+--
+-- TOC entry 2984 (class 2606 OID 82135)
+-- Name: EQUIPAMIENTO - PROVEEDORES LOCALES EQUIPAMIENTO - PROVEEDORES LOCALES_id_proveedor_local_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."EQUIPAMIENTO - PROVEEDORES LOCALES"
+    ADD CONSTRAINT "EQUIPAMIENTO - PROVEEDORES LOCALES_id_proveedor_local_fkey" FOREIGN KEY (id_proveedor_local) REFERENCES public."PROVEEDORES LOCALES"(id_proveedor_local);
+
+
+--
+-- TOC entry 2977 (class 2606 OID 81996)
+-- Name: EQUIPAMIENTOS EQUIPAMIENTOS_id_tipo_equipamiento_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."EQUIPAMIENTOS"
+    ADD CONSTRAINT "EQUIPAMIENTOS_id_tipo_equipamiento_fkey" FOREIGN KEY (id_tipo_equipamiento) REFERENCES public."TIPO DE EQUIPAMIENTO"(id_tipo_equipamiento);
+
+
+--
+-- TOC entry 2979 (class 2606 OID 82034)
+-- Name: ESPECIFICACIONES TECNICAS ESPECIFICACIONES TECNICAS_id_equipamiento_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."ESPECIFICACIONES TECNICAS"
+    ADD CONSTRAINT "ESPECIFICACIONES TECNICAS_id_equipamiento_fkey" FOREIGN KEY (id_equipamiento) REFERENCES public."EQUIPAMIENTOS"(id_equipamiento);
+
+
+--
+-- TOC entry 2978 (class 2606 OID 82029)
+-- Name: ESPECIFICACIONES TECNICAS ESPECIFICACIONES TECNICAS_id_tipos_especifacion_tecnica_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."ESPECIFICACIONES TECNICAS"
+    ADD CONSTRAINT "ESPECIFICACIONES TECNICAS_id_tipos_especifacion_tecnica_fkey" FOREIGN KEY (id_tipos_especifacion_tecnica) REFERENCES public."TIPOS DE ESPECIFICACIONES TECNICAS"(id_tipo_especificacion_tecnica);
+
+
+--
+-- TOC entry 2981 (class 2606 OID 82098)
+-- Name: LOCAL -TIPO DE EQUIPAMIENTO LOCAL-TIPO DE EQUIPAMIENTO_id_local_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."LOCAL -TIPO DE EQUIPAMIENTO"
+    ADD CONSTRAINT "LOCAL-TIPO DE EQUIPAMIENTO_id_local_fkey" FOREIGN KEY (id_local) REFERENCES public."LOCALES"(id_local);
+
+
+--
+-- TOC entry 2982 (class 2606 OID 82103)
+-- Name: LOCAL -TIPO DE EQUIPAMIENTO LOCAL-TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."LOCAL -TIPO DE EQUIPAMIENTO"
+    ADD CONSTRAINT "LOCAL-TIPO DE EQUIPAMIENTO_id_tipo_equipamiento_fkey" FOREIGN KEY (id_tipo_equipamiento) REFERENCES public."TIPO DE EQUIPAMIENTO"(id_tipo_equipamiento);
+
+
+--
+-- TOC entry 2980 (class 2606 OID 82079)
+-- Name: LOCALES LOCALES_id_servicio_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."LOCALES"
+    ADD CONSTRAINT "LOCALES_id_servicio_fkey" FOREIGN KEY (id_servicio) REFERENCES public."SERVICIOS"(id_servicio);
+
+
+-- Completed on 2023-02-27 01:39:35
+
+--
+-- PostgreSQL database dump complete
+--
+

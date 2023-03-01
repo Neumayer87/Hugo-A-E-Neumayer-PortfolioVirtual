@@ -1,0 +1,276 @@
+
+
+-- carga de datos y creacion de tablas.
+
+COPY public."TIPO DE EQUIPAMIENTO"(id_tipo_equipamiento,nombre_pngcam,categoria,descripcion_pngcam,ecri)
+
+FROM 'C:\Users\Public\TIPO DE EQUIPAMIENTO.csv'
+DELIMITER ','
+CSV HEADER;
+COPY public."EQUIPAMIENTOS"(id_tipo_equipamiento,id_equipamiento,nombre_de_venta,Marca,Modelo,descripcion_gral,manual_tecnico,dispocicion_anmat,instalacion_y_o_equip_auxiliar_requerido,Plano_de_instalacion_gral
+)
+
+FROM 'C:\Users\Public\EQUIPAMIENTO.csv'
+DELIMITER ';'
+CSV HEADER;
+
+CREATE TABLE IF NOT EXISTS public."TIPOS DE ESPECIFICACIONES TECNICAS"(
+id_tipo_especificacion_tecnica serial NOT NULL,
+tipo_especificacion_tecnica varchar NOT NULL,
+ PRIMARY KEY (id_tipo_especificacion_tecnica)
+	)
+CREATE TABLE  IF NOT EXISTS public."ESPECIFICACIONES TECNICAS"(
+id_equipamiento serial NOT NULL,
+id_especificaciones_tecnicas serial NOT NULL,
+id_tipos_especifacion_tecnica serial NOT NULL,
+nombre varchar NOT NULL,
+dato_magnitud varchar,
+unidades varchar,
+descripcion_particular varchar,
+plano_de_instalacion_particular varchar,
+PRIMARY KEY(id_especificaciones_tecnicas) ,
+FOREIGN KEY(id_tipos_especifacion_tecnica) REFERENCES "TIPOS DE ESPECIFICACIONES TECNICAS"(id_tipo_especificacion_tecnica ),
+FOREIGN KEY(id_equipamiento)REFERENCES "EQUIPAMIENTOS"(id_equipamiento) 
+
+)
+
+COPY public."TIPOS DE ESPECIFICACIONES TECNICAS"(id_tipo_especificacion_tecnica,tipo_especificacion_tecnica)
+FROM 'C:\Users\Public\TIPOS DE ESPECIFICACIONES TECNICAS.csv'
+DELIMITER ','
+CSV HEADER;
+
+COPY public."ESPECIFICACIONES TECNICAS"(id_equipamiento,id_especificaciones_tecnicas,id_tipos_especifacion_tecnica,nombre,dato_magnitud,unidades,descripcion_particular,plano_de_instalacion_particular)
+
+FROM 'C:\Users\Public\ESPECIFICACIONES TECNICAS.csv'
+DELIMITER ','
+CSV HEADER;
+
+
+CREATE TABLE  IF NOT EXISTS public."SERVICIOS"
+(
+Id_servicio serial NOT NULL,
+nombre_del_servicio varchar NOT NULL,
+nombre_en_pngcam varchar ,
+directriz_pngcam varchar,
+PRIMARY KEY(Id_servicio)
+)
+
+CREATE TABLE IF NOT EXISTS public."LOCALES"
+(
+id_servicio serial NOT NULL,
+id_local serial NOT NULL,
+nombre_del_local varchar NOT NULL,
+superficie_exigible_en_m2 varchar,
+superficie_deseable_en_m2 varchar,
+zona_y_o_area_y_o_unidad varchar,
+PRIMARY KEY(id_local),
+FOREIGN KEY(id_servicio) REFERENCES "SERVICIOS"(id_servicio) 
+)
+
+CREATE TABLE IF NOT EXISTS public."LOCAL-TIPO DE EQUIPAMIENTO"
+(
+id_local serial NOT NULL,
+id_tipo_equipamiento serial NOT NULL,
+equipamiento_minimo_pngcam varchar,
+equipamiento_deseable_pngcam varchar,
+	PRIMARY KEY(id_local,id_tipo_equipamiento),
+	FOREIGN KEY(id_local) REFERENCES "LOCALES"(id_local), 
+	FOREIGN KEY(id_tipo_equipamiento) REFERENCES "TIPO DE EQUIPAMIENTO"(id_tipo_equipamiento) 
+)
+
+COPY public."SERVICIOS"(id_servicio,nombre_del_servicio,nombre_en_pngcam,directriz_pngcam)
+FROM 'C:\Users\Public\SERVICIO.csv'
+DELIMITER ','
+CSV HEADER;
+
+
+COPY public."LOCALES"(id_servicio,id_local,nombre_del_local,superficie_exigible_en_m2,superficie_deseable_en_m2,zona_y_o_area_y_o_unidad
+)
+FROM 'C:\Users\Public\LOCALES.csv'
+DELIMITER ','
+CSV HEADER;
+
+
+COPY public."LOCAL -TIPO DE EQUIPAMIENTO"(id_local,id_tipo_equipamiento,equipamiento_minimo_pngcam,equipamiento_deseable_pngcam)
+FROM 'C:\Users\Public\LOCAL-TIPO DE EQUIPAMIENTO.csv'
+DELIMITER ','
+CSV HEADER;
+
+CREATE TABLE IF NOT EXISTS public."PROVEEDORES LOCALES"(
+id_proveedor_local serial NOT NULL,
+	nombre_proveedor_local varchar NOT NULL,
+	rubro varchar NOT NULL,
+	telefono varchar NOT NULL,
+	pagina_web varchar NOT NULL,
+	antecedentes varchar NOT NULL,
+	email varchar  NOT NULL,
+ PRIMARY KEY (id_proveedor_local)
+	)
+COPY public."PROVEEDORES LOCALES"(id_proveedor_local,nombre_proveedor_local,rubro,telefono,pagina_web,antecedentes,email)
+FROM 'C:\Users\Public\PROVEEDORES LOCALES.csv'
+DELIMITER ','
+CSV HEADER;
+
+CREATE TABLE IF NOT EXISTS public."EQUIPAMIENTO - PROVEEDORES LOCALES"(
+id_equipamiento serial NOT NULL,
+id_proveedor_local serial NOT NULL,
+ PRIMARY KEY (id_equipamiento,id_proveedor_local),
+	FOREIGN KEY (id_equipamiento) REFERENCES  "EQUIPAMIENTOS" (id_equipamiento),
+	FOREIGN KEY (id_proveedor_local) REFERENCES "PROVEEDORES LOCALES"(id_proveedor_local)
+
+)
+COPY public."EQUIPAMIENTO - PROVEEDORES LOCALES"(id_equipamiento,id_proveedor_local)
+FROM 'C:\Users\Public\EQUIPAMIENTO-PROVEEDOR LOCAL.csv'
+DELIMITER ','
+CSV HEADER;
+
+
+CREATE TABLE IF NOT EXISTS public."CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO"(
+id_servicio serial NOT NULL,
+id_caracteristica_constructiva_s serial NOT NULL,
+nombre_caract_constructiva_s varchar NOT NULL,
+descripcion_caract_exigible_s varchar NOT NULL,
+descripcion_carct_deseable_s  varchar NOT NULL,
+PRIMARY KEY(id_caracteristica_constructiva_s,id_servicio),
+FOREIGN KEY(id_servicio)  REFERENCES "SERVICIOS"(Id_servicio)
+)
+
+
+COPY public."CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO"(id_servicio,id_caracteristica_constructiva_s,nombre_caract_constructiva_s,descripcion_caract_exigible_s,descripcion_carct_deseable_s)
+FROM 'C:\Users\Public\CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO.csv'
+DELIMITER ','
+CSV HEADER;
+
+CREATE TABLE IF NOT EXISTS public."CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL"(
+id_local serial NOT NULL,
+id_caracteristicas_constructivas_l serial NOT NULL,
+nombre_caract_constructiva_L varchar NOT NULL,
+descrip_caract_exigible_l varchar NOT NULL,
+descrip_caract_deseable_l  varchar NOT NULL,
+PRIMARY KEY(id_caracteristicas_constructivas_l ,id_local),
+FOREIGN KEY(id_local)  REFERENCES "LOCALES"(id_local)
+)
+
+
+COPY public."CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL"(id_local,id_caracteristicas_constructivas_l,nombre_caract_constructiva_L ,descrip_caract_exigible_l,descrip_caract_deseable_l)
+FROM 'C:\Users\Public\CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL.csv'
+DELIMITER ','
+CSV HEADER;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Pruebas de funcionamiento de la BD 
+
+--Visualizacion del contenido de las tablas
+
+SELECT * FROM "SERVICIOS"
+SELECT * FROM "LOCALES"
+SELECT * FROM "LOCALE -TIPO DE EQUIPAMIENTO"
+SELECT * FROM "EQUIPAMIENTO"
+SELECT * FROM "EQUIPAMIENTO -PROVEEDORES LOCALES"
+SELECT * FROM "PROVEEDORES LOCALES"
+SELECT * FROM "TIPO DE EQUIPAMIENTO"
+SELECT * FROM "ESPECIFICACIONES TECNICAS"
+SELECT * FROM "TIPO DE ESPECIFICACIONES TECNICAS"
+SELECT * FROM "CARACTERISTICAS CONSTRUCTIVAS DEL LOCAL"
+SELECT * FROM "CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO"
+
+
+--Consultas n° 1 del diagrama de flujo
+
+-- 1.a) Visualizar el listado de Servicios Hospitalarios
+
+SELECT nombre_del_servicio  
+FROM "SERVICIOS";
+
+--1.b)Seleccionar el Servicio de Esterilización 
+
+SELECT  	* 
+FROM  "SERVICIOS"
+WHERE nombre_del_servicio  = 'Esterilizacion';
+--1.b.I) Visualizar características constructivas grales del Servicio de Esterilización: Aquí unen las tablas 	SERVICIO con la de CARACTERISTICAS_CONSTRUTIVA_DEL_SERVICIO mediante la sentencia INNER JOIN
+
+SELECT     	
+cc.nombre_caract_constructiva_s,
+cc.descripcion_caract_exigible_s,
+cc.descripcion_carct_deseable_s
+FROM  "SERVICIOS" AS s
+INNER JOIN "CARACTERISTICAS CONSTRUCTIVAS DEL SERVICIO" AS cc
+ON s.Id_servicio= cc.id_servicio 
+	WHERE   nombre_del_servicio  = 'Esterilizacion';
+
+--1.b.II)Visualizar listado  de Locales  del Servicio de Esterilización
+
+SELECT 	 	nombre_del_servicio,
+			nombre_del_local
+FROM  "SERVICIOS" AS s
+INNER JOIN  "LOCALES" AS l
+ON s.id_servicio=l.id_servicio
+WHERE  s.nombre_del_servicio  = 'Esterilizacion';
+
+-- Aqui condensamos 1.b.II.i) Seleccionar el local de Recepción y Clasificación  del servicio de Esterilización y 1.bII.ii* Ver caracteristicas particulares
+--del Local selecionado
+SELECT 	 	* 
+FROM  "SERVICIOS" AS s
+INNER JOIN  "LOCALES" AS l
+ON s.id_servicio=l.id_servicio
+WHERE  l.nombre_del_local  = 'Recepcion y Clasificacion';
+
+--1.b.II.i**)  Visualizar tipo y cantidad Equipamiento sugerido por PNGCAM para el Local de Recepción y Clasificación. 
+
+SELECT  nombre_del_local , 
+		equipamiento_deseable_pngcam,
+		equipamiento_minimo_pngcam,
+		nombre_pngcam
+FROM  "LOCALES" AS  l
+INNER JOIN  "LOCAL -TIPO DE EQUIPAMIENTO" AS le
+ON l.id_local=le.id_local
+INNER JOIN "TIPO DE EQUIPAMIENTO" AS tp
+ON le.id_tipo_equipamiento= tp.id_tipo_equipamiento
+WHERE  l.nombre_del_local  = 'Recepcion y Clasificacion';
+
+
+--Consultas n° 2 del diagrama de flujo
+
+--2.a)   Visualizar equipamiento ordenado por categoría, con descripción y código ecri
+
+SELECT nombre_pngcam,
+categoria,
+descripcion_pngcam,
+ecri
+FROM "TIPO DE EQUIPAMIENTO"
+ORDER BY categoria
+--A continuación se resumen 2.b) y 2.b.I) , donde se selecciona un tipo de equipamiento  y se visualiza el listado de equipamiento por marca  y modelo. 
+
+SELECT 		
+			te.nombre_pngcam,
+			modelo,
+			marca
+FROM   "TIPO DE EQUIPAMIENTO"  AS te
+INNER JOIN "EQUIPAMIENTOS"  AS e
+ON  te.id_tipo_equipamiento = e.id_tipo_equipamiento
+WHERE te.nombre_pngcam = 'Lavadoras mecanicas automaticas ' 
+		 ;
+		 
+	--	 2.b.I.i. Seleccionar Lavadoras mecánicas automáticas marca “at-os” modelo AWD655-10A SC Puerta corrediza automatica
+SELECT 		*
+FROM 	"EQUIPAMIENTOS"
+WHERE  marca  = 'at-os' AND modelo= 'AWD655-10A SC Puerta corrediza automatica' ;
+
+--2.b.I.i**	. Visualizar especificaciones técnicas de la lavadora mecanica automatica at-os, marca AWD655-10A SC Puerta corrediza automática.
+
+
